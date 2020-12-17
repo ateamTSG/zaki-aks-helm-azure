@@ -1,5 +1,6 @@
 #!/bin/bash -x
-# Tzahi Ariel 2020
+# Tzahi Ariel 2020 - Not finished.. Testing Version 1.2
+## Before exec: fill in the VARS below
 
 # Checking Prerequisites
 echo "AZ CLI needs to be at least 2.0.71"
@@ -27,10 +28,14 @@ fi
 # Constant VAR
 export HELM_EXPERIMENTAL_OCI=1
 
-# Variables ### CHANGE HERE ###
+# Variables ### CHANGE HERE! ###
+# Make sure you ran the sp_creation.sh script beforehand
 
+# Registry
 REG='XXXX.azurecr.io'
+# ServicePrinciple ID
 SPID='<SERVICE-PRINCIPLE-ID>'
+# ServicePrinciple Password
 PASS='<SERVICE-PRINCIPLE-PASSWORD>'
 
 ###
@@ -64,6 +69,6 @@ echo $PASS | helm registry login $REG --username $SPID --password-stdin
 helm chart push $REG/helm/nginx-deployment:latest
 
 
-## Verify push with
+## Verify push with the following commands
 az acr repository show --name $REG --repository helm/nginx-deployment
 az acr repository show-manifests --name $REG --repository helm/nginx-deployment --detail
