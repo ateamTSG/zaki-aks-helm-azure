@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Microsoft Template taken from docs
 # Modify for your environment.
 # ACR_NAME: The name of your Azure Container Registry
 # SERVICE_PRINCIPAL_NAME: Must be unique within your AD tenant
